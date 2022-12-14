@@ -1,12 +1,8 @@
 name: Continuous Integration
 
-# This action works with pull requests and pushes
 on:
   pull_request:
-  push:
-    branches:
-      - "development"
-      - "!main"
+    types: [opened, synchronize, reopened, edited]
 
 jobs:
   prettier:
@@ -16,11 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
 
       - name: Prettify code
         uses: creyD/prettier_action@v4.2
         with:
-          # This part is also where you can pass other options, for example:
+          only_changed: True
           prettier_options: --write .
