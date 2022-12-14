@@ -3,9 +3,7 @@ name: Continuous Integration
 # This action works with pull requests and pushes
 on:
   pull_request:
-    types:
-      - opened
-      - edited
+    types: [opened, synchronize]
 
 jobs:
   prettier:
