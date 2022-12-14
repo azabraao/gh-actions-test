@@ -4,8 +4,10 @@ name: Continuous Integration
 on:
   pull_request:
   push:
-    branches:
+    branches-ignore:
       - main
+    branches:
+      - development
 
 jobs:
   prettier:
